@@ -50,6 +50,8 @@ void Screen::update()
 
 void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue)
 {
+    /*if(x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) //Check if pixel is off the screen
+        return*/
     Uint32 pixel = (0xFF << 24) | (red << 16) | (green << 8) | (blue);
     m_pixels[y * WIDTH + x] = pixel;
 }

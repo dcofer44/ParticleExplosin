@@ -1,5 +1,5 @@
 CXX := g++
-CFLAGS := -O2
+CFLAGS := -O2 -Wall -std=c++11
 SRC_FILES := $(wildcard src/*.cpp)
 OBJ_FILES := $(addprefix obj/, $(notdir $(SRC_FILES:.cpp=.o)))
 EXE := ParticleExplosion
