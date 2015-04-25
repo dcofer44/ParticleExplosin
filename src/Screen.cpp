@@ -50,10 +50,15 @@ void Screen::update()
 
 void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue)
 {
-    /*if(x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) //Check if pixel is off the screen
-        return*/
+    if(x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) //Check if pixel is off the screen
+        return;
     Uint32 pixel = (0xFF << 24) | (red << 16) | (green << 8) | (blue);
     m_pixels[y * WIDTH + x] = pixel;
+}
+
+void Screen::clear()
+{
+    memset(m_pixels, 0, NUM_PIXELS * sizeof(Uint32));//Change all pixel values to black
 }
 
 bool Screen::processEvents()
@@ -70,14 +75,13 @@ bool Screen::processEvents()
     return true;
 }
 
-bool Screen::close()
+void Screen::close()
 {
     delete[] m_pixels;
     SDL_DestroyRenderer(m_renderer);
     SDL_DestroyTexture(m_texture);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
-    return true;
 }
 
 std::string Screen::getErrorMsg()

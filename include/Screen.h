@@ -17,7 +17,8 @@ class Screen
         void update();
         void setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue);
         bool processEvents();
-        bool close();
+        void close();
+        void clear();
 
         std::string getErrorMsg();
 
